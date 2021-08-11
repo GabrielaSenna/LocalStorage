@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        #fconf{
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            border: 1px solid black;
+            background-color: #888;
+            padding: 20px;
+            border-radius: 5px;
+            display: none;
+        }
+    </style>
+    
+    <script>
+
+        var corFundo, corTexto, vnome; //definindo variáveis 
+
+        function inicia(){
+            if( localStorage.nome){ //pegar qualquer uma para ver se existe, caso sim
+             vcorf=localStorage.corFundo
+             vcort=localStorage.corTexto
+             vnome=localStorage.nome
+             defineCor(1, vcorf)
+             defineCor(2, vcort)
+             document.getElementById("painel").innerHTML="Bem-Vindo de volta "+vnome+"<hr>"
+        }
+        }
+
+        function Gravar(){ //pegar Nome e variáveis de cor
+            var form=document.getElementById("fconf")
+            vnome=document.getElementById("fnome").value;
+            localStorage.corFundo=corFundo;
+            localStorage.corTexto=corTexto;
+            localStorage.nome=vnome
+            form.style.display="none"//faz com que o formulário seja oculto após apertar o botão
+        }
+
+        //chamar a função sempre dentro do ONCLICK
+        function defineCor(op,cor){//op, cor significa que a função é para alterar a operação de cores
+            if(op==1){
+                document.body.style.backgroundColor=cor; //mudando cor do fundo
+                corFundo=cor; //Leitura: variável corFundo recebe cor
+            }else{ //caso operação seja diferente de 1 
+                document.body.style.color=cor; //mudando cor do texto
+                corTexto=cor;
+            }
+        }
+        //faz com que o formulário só apareça quando clicarmos no botão "Configurar"
+        function mostraConf(){
+            var form=document.getElementById("fconf")
+            form.style.display="block"
+        }
+
+        window.addEventListener("load", inicia)
+    </script>
+
+<title>Teste LocalStorage 3</title>
+</head>
+<body>
+    <p>LocalStorage - Alteração tema do site</p>
+    <p id="painel"></p>
+
+    <button onclick="mostraConf()">Configurações</button>
+    
+    <!--modelo de formulário-->
+   <form name="fconf" id="fconf">
+        <label>Nome:</label>
+        <br>
+        <input type="text" name="fnome" id="fnome" size="20">
+        <br><br>
+        <label>Cor fundo:</label>
+        <br>
+        <input type="radio" name="fcorFundo" onclick="defineCor(1,'#fff')">Branco
+        <br>
+        <input type="radio" name="fcorFundo" onclick="defineCor(1,'#000')">Preto
+        <br>
+        <input type="radio" name="fcorFundo" onclick="defineCor(1,'#f00')">Vermelho
+        <br>
+        <input type="radio" name="fcorFundo" onclick="defineCor(1,'#0f0')">Verde
+        <br>
+        <input type="radio" name="fcorFundo" onclick="defineCor(1,'#00f')">Azul
+        <br><br>
+        <label>Cor texto:</label>
+        <br>
+        <Input type="radio" name="fcorTexto" onclick="defineCor(2,'#000')">Preto <!--Para mudar cor do textoe o else funcionar, inserimos qualquer valor diferente de 1-->
+        <br>
+        <Input type="radio" name="fcorTexto" onclick="defineCor(2,'#fff')">Branco
+        <br><br>
+        <input type="button" value="Gravar" onclick="Gravar()"> 
+    </form>
+    
+</body>
+</html>

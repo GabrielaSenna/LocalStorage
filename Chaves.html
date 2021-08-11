@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste LocalStorage</title>
+</head>
+<body>
+    <h3>Colocando e excluindo chaves</h3>
+    <script>
+        //Para verificar se o Browser suporta Web Storage, utilizamos:
+        if(typeof(Storage)!="undefined"){ //leitura: Se o tipo Storage for diferente de indefinido, significa que ele suporta 
+
+            localStorage.setItem("canal","Teste teste") //setItem cria
+            //localStorage.removeItem("canal") removeItem exclui
+
+            //var vteste=localStorage.getItem("canal")
+            var vteste=localStorage.canal; //linhas 14 e 15 fazem a msm função
+
+            document.write(vteste) //imprimir valor da variavel 
+        }else{
+            //caso não suporte, aparecerá a seguinte mensagem:
+            document.write("Sem suporte a Web Storage")
+        }
+    </script>
+</body>
+</html>  

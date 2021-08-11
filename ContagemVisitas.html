@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste LocalStorage 2</title>
+</head>
+<body>
+    <h2>Contador de acessos no site</h2>
+    <script>
+        if(localStorage.visitas){
+            localStorage.visitas=Number(localStorage.visitas)+1// Recebe seu pr´´oprio valor mais 1, "Number" garante que vai ser um valor numerico
+        }else{
+            //localStorage.setItem("visitas","1")
+            localStorage.visitas=1 //maneira simplificada da linha de cima, possuem o mesmo resultado
+        }
+        document.write("Visitas: " + localStorage.visitas) //imprimindo algoritmo criado 
+    </script>
+</body>
+</html>
